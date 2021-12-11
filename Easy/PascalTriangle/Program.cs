@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ConsoleApp1
+namespace PascalTriangle
 {
     internal class Program
     {
+        /*
+        https://leetcode.com/problems/pascals-triangle/
+        */
+
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
