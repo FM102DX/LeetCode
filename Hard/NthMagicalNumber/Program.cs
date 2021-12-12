@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace NthMagicalNumber
 {
@@ -15,17 +17,16 @@ namespace NthMagicalNumber
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
             //TestRun();
-            
+
             //RunOnce(1000000000, 40000, 40000);
-            
-            RunOnce(1000000000, 39999, 40000);
 
+            //RunOnce(1000000000, 39999, 40000);
 
+            //RunOnce(3, 6, 4);
 
-            // 5,2,4
-
-            //TestRun();
+            RunOnce(3, 8, 9);
         }
 
         public static void TestRun(int tries = 20)
@@ -68,6 +69,15 @@ namespace NthMagicalNumber
             Int64 _n;
             Int64 _a;
             Int64 _b;
+            
+            Int64 nIsEvenMultiplier;
+            Int64 nIsOddMultiplier;
+            Int64 actualNMultiplier;
+
+            Int64 bigger;
+            Int64 smaller;
+            bool nIsEven;
+
             bool bIsEnough;
             bool aIsEnough;
             bool isFlatTask;
@@ -86,6 +96,14 @@ namespace NthMagicalNumber
                 {
                     flatDevider = aIsEnough ? _a : _b;
                 }
+                bigger = (_a > _b) ? _a : _b;
+                smaller = (_a > _b) ? _b : _a;
+                nIsEven = n % 2 == 0;
+                nIsEvenMultiplier = (n / 2);
+                nIsOddMultiplier = (n / 2)+1;
+                actualNMultiplier = nIsEven ? nIsEvenMultiplier : nIsOddMultiplier;
+
+                //Console.WriteLine($"n={n} nIsEvenMultiplier={nIsEvenMultiplier} nIsOddMultiplier={nIsOddMultiplier}");
             }
 
             public int Find()
@@ -107,44 +125,79 @@ namespace NthMagicalNumber
             private Int64 FindIFlat()
             {
                 return flatDevider * _n;
+            }
 
-                /*
-                 * int i = 1;
-                int rezCounter = 0;
-                bool r;
-
-                if (aIsEnough)
-                {
-                    while (true)
-                    {
-                        r = (i % flatDevider == 0);
-                        if (r) rezCounter++;
-                        if (rezCounter == _n) return i;
-                        i++;
-                    }
-                }
-                return -1;
-                */
+            private long lessOf (long a, long b)
+            {
+                if (a >= b) return b; else return a;
+            }
+            private long biggerOf(long a, long b)
+            {
+                if (b >= a) return b; else return a;
             }
 
             private Int64 FindComplicated()
             {
-                int i = 1;
-                int rezCounter = 0;
-                bool ra,rb;
+                //long[] smallerValArray = new long[_n];
+                // long[] biggerValArray = new long[_n];
 
-                while (true)
+              //  List<long> smallerValList = new List<long>();
+              //  List<long> biggerValList = new List<long>();
+
+                List<long> targetList = new List<long>();
+
+                for (long i = 1; i <=_n;i++)
                 {
-                    ra = (i % _a == 0);
-                    rb = (i % _b == 0);
-                    if (ra | rb) rezCounter++;
-                    if (rezCounter == _n) return i;
-                    i++;
+                    targetList.Add(smaller * i);
+                    targetList.Add(bigger * i);
                 }
+                targetList.Distinct().ToList().Sort();
+                return targetList.ToArray()[_n];
             }
 
+            private Int64 FindComplicated2()
+            {
+
+                long xMin = smaller * _n; //12
+
+                //Считаем, сколько раз входило большее, и надо уникальные вхождения, т.е чтобы оно с ним не совпадало
+
+                long biggerIntroNonUniqueCount = xMin / bigger; // всего вхождений
+
+                if (biggerIntroNonUniqueCount * bigger == xMin) biggerIntroNonUniqueCount--;
+
+                bool nonEncountered = false;
+
+                if (biggerIntroNonUniqueCount>0)
+                {
+                    long biggerIntroUniqueCount = 0;
+
+                    for (int i = 1; i <= biggerIntroNonUniqueCount; i++)
+                    {
+                        long f = bigger * i;
+
+                        nonEncountered = (xMin >= f) & (f >= xMin - smaller);
+
+                        if ((f % smaller != 0) & (!nonEncountered)) biggerIntroUniqueCount++;
+                    }
+
+                    long newN = _n - biggerIntroUniqueCount;
+
+                    long newXMin = smaller * newN;
+
+                    long newXmin4Bigger = bigger * (biggerIntroNonUniqueCount - 1*(nonEncountered ? 1 :0 )) ;
+
+                    //return lessOf(newXMin, newXmin4Bigger);
+                    return biggerOf(newXMin, newXmin4Bigger);
+
+                }
+                else
+                {
+                    return smaller*_n;
+                }
 
 
+            }
         }
 
     }
