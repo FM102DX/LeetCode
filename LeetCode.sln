@@ -21,7 +21,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hard", "Hard", "{7BBF0711-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NthMagicalNumber", "NthMagicalNumber", "{C41CFC9E-1C4E-4333-A72A-D00539A0ED43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NthMagicalNumber", "Hard\NthMagicalNumber\NthMagicalNumber.csproj", "{C61FA0A7-F933-4EF9-A784-601F8536DD7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NthMagicalNumber", "Hard\NthMagicalNumber\NthMagicalNumber.csproj", "{C61FA0A7-F933-4EF9-A784-601F8536DD7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Medium", "Medium", "{AE56E913-13CA-471B-AFD1-4DC5BB188215}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "416. Partition Equal Subset Sum", "416. Partition Equal Subset Sum", "{D204AF4C-C3DD-4EE9-9A9D-EE04CECB4122}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Partition Equal Subset Sum", "Medium\Partition Equal Subset Sum\Partition Equal Subset Sum.csproj", "{63B0E79C-DA6E-4389-A2E7-19F66B429DA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,10 @@ Global
 		{C61FA0A7-F933-4EF9-A784-601F8536DD7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C61FA0A7-F933-4EF9-A784-601F8536DD7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C61FA0A7-F933-4EF9-A784-601F8536DD7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63B0E79C-DA6E-4389-A2E7-19F66B429DA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63B0E79C-DA6E-4389-A2E7-19F66B429DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63B0E79C-DA6E-4389-A2E7-19F66B429DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63B0E79C-DA6E-4389-A2E7-19F66B429DA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +68,8 @@ Global
 		{3646E61C-94BE-4739-8B8D-54FD20201E1D} = {74E8E5EF-3E5A-4D7D-95C0-1B90494ED044}
 		{C41CFC9E-1C4E-4333-A72A-D00539A0ED43} = {7BBF0711-AC03-4079-B8C6-407D90C76180}
 		{C61FA0A7-F933-4EF9-A784-601F8536DD7F} = {C41CFC9E-1C4E-4333-A72A-D00539A0ED43}
+		{D204AF4C-C3DD-4EE9-9A9D-EE04CECB4122} = {AE56E913-13CA-471B-AFD1-4DC5BB188215}
+		{63B0E79C-DA6E-4389-A2E7-19F66B429DA3} = {D204AF4C-C3DD-4EE9-9A9D-EE04CECB4122}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7AA8C3AF-0440-4990-82EB-62CEA8F20B98}

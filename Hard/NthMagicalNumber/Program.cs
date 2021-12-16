@@ -9,7 +9,7 @@ namespace NthMagicalNumber
     {
 
         /*
-         * 
+         *   Задача не решена  
          * https://leetcode.com/problems/nth-magical-number/
          * 
          * */
@@ -22,11 +22,11 @@ namespace NthMagicalNumber
 
             //RunOnce(1000000000, 40000, 40000);
 
-            //RunOnce(1000000000, 39999, 40000);
+            RunOnce(1000000000, 39999, 40000);
 
             //RunOnce(3, 6, 4);
 
-            RunOnce(3, 8, 9);
+            //RunOnce(10, 10, 8);
         }
 
         public static void TestRun(int tries = 20)
@@ -138,12 +138,6 @@ namespace NthMagicalNumber
 
             private Int64 FindComplicated()
             {
-                //long[] smallerValArray = new long[_n];
-                // long[] biggerValArray = new long[_n];
-
-              //  List<long> smallerValList = new List<long>();
-              //  List<long> biggerValList = new List<long>();
-
                 List<long> targetList = new List<long>();
 
                 for (long i = 1; i <=_n;i++)
@@ -151,52 +145,14 @@ namespace NthMagicalNumber
                     targetList.Add(smaller * i);
                     targetList.Add(bigger * i);
                 }
-                targetList.Distinct().ToList().Sort();
-                return targetList.ToArray()[_n];
-            }
 
-            private Int64 FindComplicated2()
-            {
+               targetList = targetList.Distinct().ToList();
 
-                long xMin = smaller * _n; //12
+               targetList.Sort();
 
-                //Считаем, сколько раз входило большее, и надо уникальные вхождения, т.е чтобы оно с ним не совпадало
+               long[] targetArray = targetList.ToArray();
 
-                long biggerIntroNonUniqueCount = xMin / bigger; // всего вхождений
-
-                if (biggerIntroNonUniqueCount * bigger == xMin) biggerIntroNonUniqueCount--;
-
-                bool nonEncountered = false;
-
-                if (biggerIntroNonUniqueCount>0)
-                {
-                    long biggerIntroUniqueCount = 0;
-
-                    for (int i = 1; i <= biggerIntroNonUniqueCount; i++)
-                    {
-                        long f = bigger * i;
-
-                        nonEncountered = (xMin >= f) & (f >= xMin - smaller);
-
-                        if ((f % smaller != 0) & (!nonEncountered)) biggerIntroUniqueCount++;
-                    }
-
-                    long newN = _n - biggerIntroUniqueCount;
-
-                    long newXMin = smaller * newN;
-
-                    long newXmin4Bigger = bigger * (biggerIntroNonUniqueCount - 1*(nonEncountered ? 1 :0 )) ;
-
-                    //return lessOf(newXMin, newXmin4Bigger);
-                    return biggerOf(newXMin, newXmin4Bigger);
-
-                }
-                else
-                {
-                    return smaller*_n;
-                }
-
-
+               return targetArray[_n-1];
             }
         }
 
