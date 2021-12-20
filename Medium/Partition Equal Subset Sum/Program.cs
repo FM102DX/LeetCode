@@ -31,6 +31,8 @@ namespace Partition_Equal_Subset_Sum
                 {
 
                 }
+
+                return true;
             }
 
         }
